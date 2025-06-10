@@ -31,19 +31,49 @@ Pada proyek perancangan aplikasi Nutri Go in menggunakan software sebagai beriku
 - Sketsa desain UI (menggunakan tools desain visual kertas)
 
 #### Cara Menggunakan Aplikasi
+   1. Buka aplikasi NutriGo pada aplikasi NeatsBeans IDE
+   2. Pastikan Database koneksi database MySQL aktif melalui XAMPP melalui localhost/php/myadmin/
+   3. File utama yang dijalankan yaitu menampilkan tampilan awal serta membuka form utama fitur aplikasi Nutri Go
+      - Welcome.Java merupakan tampilan awal sebelum masuk pada laman register
+      - Register.Java user diharapkan mendaftar jika belum terdaftar
+      - Login.Java jika sudah terdaftar user bisa masuk di menu home
 
-1. Buka aplikasi NutriGo.
-2. Masukkan data pribadi seperti usia, tinggi badan, berat badan, dan aktivitas harian.
-3. Klik "Hitung" untuk melihat estimasi kebutuhan kalori.
-4. Lihat saran menu sehat untuk sarapan dan makan siang.
-5. Gunakan fitur kalkulator BMI untuk mengetahui status berat badanmu.
-   
+Menu form utama pada aplikasi ini yaitu
+   1. Profiluser.Java pada tampilan ini user dapat mengisi data profil
+   2. Information.Java dalam tampilan informasi berisi status gizi, cek ideal serta body mass index untuk mengetahui ideal berat badan           serta kebutuhan kalori yang akan di dibutuhkan
+   3. Breakfast.Java tampilan menu rekomendasi pagi
+   4. Lunch.Java tampilan menu rekomendasi siang
+   5. Aktivitasnew.Java aktivitas yang akan dilakukan oleh user 
+
+## Struktur File yang digunakan Nutri Go
+Peran penting dalam perancangan aplikasi Nutri Go
+   1. Main.java digunakan merupakan titik awal aplikasi berupa main () method
+   2. Aktivitasnew.Java tampilan (input) user tentang kegiatan apa aja yang dilakukan
+   3. KalkulatorGizi.Java form untuk menghitung kalori harian dengan menginput >> protein, lemak, dan karbohidrat lalu setelah klik hitung       muncul hasil kebutuhan kalori 
+   4. CekIdeal.Java atau bisa disebut Body Mass Index (BMI) dengan menginputkan tb dan bb apakah badan user tergolong <<kurang, normal,          overweight, obesitas
+## Aplikasi Nutri Go menggunakan DATABSE apa?
+   Aplikasi Nutri Go menggunakan database MySQL untuk menyimpan dan mengelola data aktivitas harian yang sudah diinput oleh user. Koneksi     antara aplikasi dan database dilakukan menggunakan JDBC (Java Database Connectivity). Koneksi Database Class Java yang biasanya            menghubungkan ke koneksi database menggunakan MySQL dan XAMPP biasanya kode berupa DriverManager.getConnection(...)
+   Contoh Kode Koneksi:
+      try {
+                String url = "jdbc:mysql://localhost:3306/profilbaru";
+                String user = "root";
+                String password = "";
+
+                DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+                Koneksi = DriverManager.getConnection(url, user, password);
+                System.out.println("Koneksi Berhasil!");
+            } catch (SQLException e) {
+                System.out.println("Koneksi Gagal: " + e.getMessage());
+            }
+        }
+        return Koneksi;
+    }
+      
 ## Tim Pengembang
+Proyek aplikasi ini di kembangkan sebagai proyek UAS mata kuliah Pemrograman Berorientasi Objek yang di susun oleh:
 
-Disusun Oleh:
-Aliyah Salsabila 24050974013
-Octavia Rahmadani 24050974028
-Program Studi S1 Pendidikan Teknologi Informasi, Fakultas Teknik, Universitas Negeri Surabaya 
-Mata Kuliah Pemrograman Berorientasi Objek
+Nama Ketua : Aliyah Salsabila 24050974013
+Anggota    : Octavia Rahmadani 24050974028
 
-
+Program Studi S1 Pendidikan Teknologi Informasi,
+Fakultas Teknik, Universitas Negeri Surabaya 
